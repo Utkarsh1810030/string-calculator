@@ -24,4 +24,13 @@ describe("String Calculator", () => {
         expect(add("1\n2,5")).toBe(8);
         expect(add("4\n5\n8")).toBe(17);
     });
+
+    test("supports custom delimiter header //;\\n", () => {
+        expect(add("//:\n1:2")).toBe(3);
+        expect(add("//$\n2$3$4")).toBe(9);
+    });
+
+    test("custom delimiter works alongside newlines", () => {
+        expect(add("//#\n1#2\n3")).toBe(6);
+    });
 });
