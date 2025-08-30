@@ -19,4 +19,9 @@ describe("String Calculator", () => {
         expect(add("1,2,3")).toBe(6);
         expect(add("1,2,3,4,5, 100 ,200, 300")).toBe(615);
     });
+
+    test("handles new lines with commas", () => {
+        expect(add("1\n2,5")).toBe(8);
+        expect(add("4\n5\n8")).toBe(17);
+    });
 });
