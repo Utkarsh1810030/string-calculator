@@ -33,4 +33,16 @@ describe("String Calculator", () => {
     test("custom delimiter works alongside newlines", () => {
         expect(add("//#\n1#2\n3")).toBe(6);
     });
+
+    test("throws on negative numbers with all negatives listed", () => {
+        expect(() => add("1,-2,3,-5")).toThrow(
+            "negative numbers not allowed -2,-5"
+        );
+    });
+
+    test("throws on negative numbers with custom delimiter", () => {
+        expect(() => add("//;\n1;-2;3")).toThrow(
+            "negative numbers not allowed -2"
+        );
+    });
 });

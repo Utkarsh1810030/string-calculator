@@ -19,6 +19,12 @@ function add(input) {
     const parts = flat.split(",").filter((s) => s !== "");
     const nums = parts.map((t) => Number(t));
 
+    //handle negative numbers
+    const negatives = nums.filter((n) => n < 0);
+    if (negatives.length) {
+        throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
+    }
+
     return nums.reduce((acc, n) => acc + (Number.isNaN(n) ? 0 : n), 0);
 }
 
