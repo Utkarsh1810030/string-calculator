@@ -1,0 +1,14 @@
+{
+  "name": "incubyte-string-calculator",
+  "version": "1.0.0",
+  "private": false,
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest --runInBand",
+    "test:watch": "jest --watch"
+  },
+  "author": "Utkarsh",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
