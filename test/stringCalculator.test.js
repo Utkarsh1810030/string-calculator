@@ -61,4 +61,11 @@ describe("String Calculator", () => {
             expect(add("10\n1000,1001")).toBe(1010);
         });
     });
+
+    describe("any length delimiter", () => {
+        test("using //[delim]\\n", () => {
+            expect(add("//[***]\n1***2***3")).toBe(6);
+            expect(add("//[%%%%]\n4%%%%5%%%%6")).toBe(15);
+        });
+    })
 });

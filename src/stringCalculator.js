@@ -19,8 +19,33 @@ function add(input) {
         body = body.slice(newLine_index + 1);
     }
 
-    const flat = body.replace(new RegExp(`[${defaultDelim}\n]`, "g"), ",");
-    const parts = flat.split(",").filter((s) => s !== "");
+    // delimiters format //[d1][d2]...\\n<numbers>
+    let delimiters = [defaultDelim, "\n"];
+    if (defaultDelim.startsWith("[")) {
+        delimiters = [];
+        let temp = "";
+        let inside = false;
+        for (let ch of defaultDelim) {
+            if (ch === "[") {
+                inside = true;
+                temp = "";
+            } else if (ch === "]") {
+                inside = false;
+                delimiters.push(temp);
+            } else if (inside) {
+                temp += ch;
+            }
+        }
+        delimiters.push("\n");
+    }
+
+    // replace all delimiters with a comma
+    for (const d of delimiters) {
+        if (d === "") continue;
+        body = body.split(d).join(",");
+    }
+
+    const parts = body.split(",").filter((s) => s !== "");
     const nums = parts.map((t) => Number(t));
 
     //handle negative numbers
