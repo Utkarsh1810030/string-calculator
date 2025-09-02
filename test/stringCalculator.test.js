@@ -68,4 +68,16 @@ describe("String Calculator", () => {
             expect(add("//[%%%%]\n4%%%%5%%%%6")).toBe(15);
         });
     })
+
+    describe("multiple delimiters of any length", () => {
+        test("using //[d1][d2]...\\n", () => {
+            expect(add("//[*][%]\n1*2%3")).toBe(6);
+            expect(add("//[;][!!][uc12]\n11uc1222;33!!44")).toBe(110);
+        });
+
+        test("with delimiters of any length", () => {
+            expect(add("//[***][%%]\n1***2%%3")).toBe(6);
+            expect(add("//[**][%%%%][;]\n11;22%%%%33**44")).toBe(110);
+        });
+    });
 });
