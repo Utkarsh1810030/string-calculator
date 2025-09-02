@@ -29,7 +29,7 @@ function add(input) {
         throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
     }
 
-    return nums.reduce((acc, n) => acc + (Number.isNaN(n) ? 0 : n), 0);
+    return nums.filter((n) => n <= 1000).reduce((acc, n) => acc + (Number.isNaN(n) ? 0 : n), 0);
 }
 
 

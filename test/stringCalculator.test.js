@@ -54,4 +54,11 @@ describe("String Calculator", () => {
             expect(getCalledCount()).toBe(initialCount + 2);
         });
     });
+
+    describe("numbers to be discarded", () => {
+        test("which are bigger than 1000", () => {
+            expect(add("2,1001")).toBe(2);
+            expect(add("10\n1000,1001")).toBe(1010);
+        });
+    });
 });
