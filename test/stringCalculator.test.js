@@ -1,4 +1,4 @@
-const { add } = require("../src/stringCalculator");
+const { add, getCalledCount } = require("../src/stringCalculator");
 
 describe("String Calculator", () => {
     test("empty string returns 0", () => {
@@ -44,5 +44,14 @@ describe("String Calculator", () => {
         expect(() => add("//;\n1;-2;3")).toThrow(
             "negative numbers not allowed -2"
         );
+    });
+
+    describe("tracking of add() calls", () => {
+        test("getCalledCount() returns number of times add() was called", () => {
+            const initialCount = getCalledCount();
+            add("1,2");
+            add("3,4");
+            expect(getCalledCount()).toBe(initialCount + 2);
+        });
     });
 });

@@ -1,4 +1,8 @@
+let addCalledCount = 0;
+
 function add(input) {
+    addCalledCount++;
+
     //For empty string input
     if (input === "") return 0;
 
@@ -28,4 +32,9 @@ function add(input) {
     return nums.reduce((acc, n) => acc + (Number.isNaN(n) ? 0 : n), 0);
 }
 
-module.exports = { add };
+
+function getCalledCount() {
+    return addCalledCount;
+}
+
+module.exports = { add, getCalledCount };
